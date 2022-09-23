@@ -10,11 +10,11 @@ import java.util.Objects;
 @Entity
 @Inheritance(strategy=InheritanceType.JOINED)
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "@type")
-public class Pagamento {
+public abstract class Pagamento {
 
     @Id
     private Integer id;
-    private EstadoPagamento estado;
+    private Integer estado;
 
     @JsonIgnore
     @OneToOne
@@ -36,7 +36,7 @@ public class Pagamento {
 
     public Pagamento(Integer id, EstadoPagamento estado, Pedido pedido) {
         this.id = id;
-        this.estado = estado;
+        this.estado = estado.getCod();
         this.pedido = pedido;
     }
 
@@ -49,11 +49,11 @@ public class Pagamento {
     }
 
     public EstadoPagamento getEstado() {
-        return estado;
+        return EstadoPagamento.toEnum(estado);
     }
 
     public void setEstado(EstadoPagamento estado) {
-        this.estado = estado;
+        this.estado = estado.getCod();
     }
 
     @Override

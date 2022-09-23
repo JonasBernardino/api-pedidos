@@ -3,37 +3,25 @@ package br.com.jonas.cursomc.domain;
 import br.com.jonas.cursomc.domain.enuns.EstadoPagamento;
 
 import javax.persistence.Entity;
-import java.util.Date;
 
 @Entity
 public class PagamentoComCartao extends Pagamento {
-    private Date dataVencimento;
-    private Date dataPagamento;
 
-
-    public PagamentoComCartao(Integer id, EstadoPagamento estado, Pedido pedido, Date dataVencimento, Date dataPagamento) {
-        super(id,estado,pedido);
-        this.dataVencimento = dataVencimento;
-        this.dataPagamento = dataPagamento;
-    }
+    private Integer numeroDeParcelas;
 
     public PagamentoComCartao() {
-
     }
 
-    public Date getDataVencimento() {
-        return dataVencimento;
+    public PagamentoComCartao(Integer id, EstadoPagamento estado, Pedido pedido, Integer numeroDeParcelas) {
+        super(id,estado,pedido);
+        this.numeroDeParcelas = numeroDeParcelas;
     }
 
-    public void setDataVencimento(Date dataVencimento) {
-        this.dataVencimento = dataVencimento;
+    public Integer getNumeroDeParcelas() {
+        return numeroDeParcelas;
     }
 
-    public Date getDataPagamento() {
-        return dataPagamento;
-    }
-
-    public void setDataPagamento(Date dataPagamento) {
-        this.dataPagamento = dataPagamento;
+    public void setNumeroDeParcelas(Integer numeroDeParcelas) {
+        this.numeroDeParcelas = numeroDeParcelas;
     }
 }

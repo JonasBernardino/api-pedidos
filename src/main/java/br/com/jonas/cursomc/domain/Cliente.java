@@ -26,7 +26,7 @@ public class Cliente {
 
     @ElementCollection
     @CollectionTable(name = "TELEFONE")
-    private Set<String> telefone = new HashSet<>();
+    private Set<String> telefones = new HashSet<>();
 
     public Cliente() {
     }
@@ -87,12 +87,12 @@ public class Cliente {
         this.enderecos = enderecos;
     }
 
-    public Set<String> getTelefone() {
-        return telefone;
+    public Set<String> getTelefones() {
+        return telefones;
     }
 
     public void setTelefone(Set<String> telefone) {
-        this.telefone = telefone;
+        this.telefones = telefone;
     }
 
     public List<Pedido> getPedidos() {

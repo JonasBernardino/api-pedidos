@@ -38,10 +38,9 @@ public class Pedido {
     public Pedido() {
     }
 
-    public Pedido(Integer id, Date instate, Pagamento pagamento, Cliente cliente, Endereco enderecoDeEntrega) {
+    public Pedido(Integer id, Date instate, Cliente cliente, Endereco enderecoDeEntrega) {
         this.id = id;
         this.instate = instate;
-        this.pagamento = pagamento;
         this.cliente = cliente;
         this.enderecoDeEntrega = enderecoDeEntrega;
     }

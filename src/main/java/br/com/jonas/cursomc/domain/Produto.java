@@ -1,5 +1,6 @@
 package br.com.jonas.cursomc.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
@@ -15,6 +16,7 @@ public class Produto {
     private Integer id;
     private String nome;
     private Double preco;
+
 
     @JsonIgnore
     @ManyToMany

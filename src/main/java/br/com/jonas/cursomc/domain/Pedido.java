@@ -1,9 +1,7 @@
 package br.com.jonas.cursomc.domain;
 
 import javax.persistence.*;
-import java.util.Date;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 @Entity
 public class Pedido {
@@ -26,6 +24,8 @@ public class Pedido {
     private Endereco enderecoDeEntrega;
 
    // private List<Produto> produtos;
+    @OneToMany(mappedBy = "id.pedido")
+    private Set<ItemPedido> itens = new HashSet<>();
 
     public Pagamento getPagamento() {
         return pagamento;
@@ -43,6 +43,14 @@ public class Pedido {
         this.instate = instate;
         this.cliente = cliente;
         this.enderecoDeEntrega = enderecoDeEntrega;
+    }
+
+    public Set<ItemPedido> getItens() {
+        return itens;
+    }
+
+    public void setItens(Set<ItemPedido> itens) {
+        this.itens = itens;
     }
 
     public Integer getId() {

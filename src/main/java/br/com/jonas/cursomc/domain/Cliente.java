@@ -1,6 +1,7 @@
 package br.com.jonas.cursomc.domain;
 
 import br.com.jonas.cursomc.domain.enuns.TipoCliente;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
@@ -17,6 +18,7 @@ public class Cliente {
     private String cpfOuCnpj;
     private Integer tipo;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "cliente")
     private List<Pedido> pedidos = new ArrayList<>();
 

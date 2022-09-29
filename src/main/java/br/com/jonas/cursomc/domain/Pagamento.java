@@ -1,6 +1,7 @@
 package br.com.jonas.cursomc.domain;
 
 import br.com.jonas.cursomc.domain.enuns.EstadoPagamento;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 

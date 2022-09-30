@@ -1,6 +1,7 @@
 package br.com.jonas.cursomc.controller;
 
 import br.com.jonas.cursomc.domain.Categoria;
+import br.com.jonas.cursomc.dto.CategoriaDTO;
 import br.com.jonas.cursomc.service.CategoriaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -9,6 +10,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/categorias")
@@ -21,9 +23,12 @@ public class CategoriaController {
     public ResponseEntity<Categoria> findById(@PathVariable Integer id){
         return ResponseEntity.ok().body(categoriaService.findById(id));
     }
+
     @GetMapping()
-    public ResponseEntity<List<Categoria>> findAll(){
-        return  ResponseEntity.ok().body(categoriaService.findAll());
+    public ResponseEntity<List<CategoriaDTO>> findAll() {
+        List<Categoria> list = categoriaService.findAll();
+        List<CategoriaDTO> dtoList = list.stream().map(obj -> new CategoriaDTO(obj)).collect(Collectors.toList());
+        return ResponseEntity.ok().body(dtoList);
     }
 
     @PostMapping

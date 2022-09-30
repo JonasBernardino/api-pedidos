@@ -1,8 +1,6 @@
 package br.com.jonas.cursomc.domain;
 
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,14 +13,11 @@ public class Categoria {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String nome;
-
     //mapeamento muito para muitos dos dois lados
     @ManyToMany(mappedBy="categorias")
     private List<Produto> produtos = new ArrayList<>();
-
     public Categoria() {
     }
-
     public Categoria(Integer id, String nome) {
         this.id = id;
         this.nome = nome;
